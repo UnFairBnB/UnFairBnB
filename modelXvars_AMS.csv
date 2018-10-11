@@ -1,149 +1,154 @@
-,name,Keep
-0,id,False
-1,last_scraped,False
-2,summary,False
-3,description,False
-4,house_rules,False
-5,host_id,False
-6,host_location,False
-7,host_response_time,False
-8,host_response_rate,True
-9,host_is_superhost,False
-10,host_listings_count,False
-11,host_total_listings_count,False
-12,host_verifications,False
-13,host_has_profile_pic,False
-14,host_identity_verified,False
-15,neighbourhood,False
-16,neighbourhood_cleansed,False
-17,city,False
-18,state,False
-19,zipcode,False
-20,market,False
-21,country_code,False
-22,country,False
-23,latitude,False
-24,longitude,False
-25,is_location_exact,False
-26,property_type,False
-27,room_type,False
-28,accommodates,True
-29,bathrooms,True
-30,bedrooms,True
-31,beds,True
-32,bed_type,False
-33,amenities,False
-34,square_feet,True
-35,price,True
-36,weekly_price,True
-37,monthly_price,True
-38,cleaning_fee,True
-39,guests_included,True
-40,extra_people,True
-41,minimum_nights,True
-42,maximum_nights,True
-43,has_availability,False
-44,availability_30,True
-45,availability_60,True
-46,availability_90,True
-47,availability_365,True
-48,number_of_reviews,True
-49,first_review,False
-50,last_review,False
-51,review_scores_rating,True
-52,review_scores_accuracy,True
-53,review_scores_cleanliness,True
-54,review_scores_checkin,True
-55,review_scores_communication,True
-56,review_scores_location,True
-57,review_scores_value,True
-58,instant_bookable,False
-59,is_business_travel_ready,False
-60,cancellation_policy,False
-61,require_guest_profile_picture,False
-62,require_guest_phone_verification,False
-63,reviews_per_month,False
-64,responseTime_fewDays,True
-65,responseTime_day,True
-66,responseTime_fewHours,True
-67,responseTime_hour,True
-68,superhost,True
-69,host_hasProfilePic,True
-70,host_id_verified,True
-71,Bijlmer-Centrum,True
-72,Bijlmer-Oost,True
-73,Bos en Lommer,True
-74,Buitenveldert - Zuidas,True
-75,Centrum-Oost,True
-76,Centrum-West,True
-77,De Aker - Nieuw Sloten,True
-78,De Baarsjes - Oud-West,True
-79,De Pijp - Rivierenbuurt,True
-80,Gaasperdam - Driemond,True
-81,Geuzenveld - Slotermeer,True
-82,IJburg - Zeeburgereiland,True
-83,Noord-Oost,True
-84,Noord-West,True
-85,Oostelijk Havengebied - Indische Buurt,True
-86,Osdorp,True
-87,Oud-Noord,True
-88,Oud-Oost,True
-89,Slotervaart,True
-90,Watergraafsmeer,True
-91,Westerpark,True
-92,Zuid,True
-93,Aparthotel,True
-94,Apartment,True
-95,Barn,True
-96,Bed and breakfast,True
-97,Boat,True
-98,Boutique hotel,True
-99,Bungalow,True
-100,Bus,True
-101,Cabin,True
-102,Camper/RV,True
-103,Campsite,True
-104,Casa particular (Cuba),True
-105,Castle,True
-106,Chalet,True
-107,Condominium,True
-108,Cottage,True
-109,Earth house,True
-110,Guest suite,True
-111,Guesthouse,True
-112,Hostel,True
-113,Hotel,True
-114,House,True
-115,Houseboat,True
-116,Lighthouse,True
-117,Loft,True
-118,Nature lodge,True
-119,Other,True
-120,Serviced apartment,True
-121,Tent,True
-122,Tiny house,True
-123,Townhouse,True
-124,Villa,True
-125,Windmill,True
-126,Yurt,True
-127,Entire home/apt,True
-128,Private room,True
-129,Shared room,True
-130,Airbed,True
-131,Couch,True
-132,Futon,True
-133,Pull-out Sofa,True
-134,Real Bed,True
-135,require_guestPic,True
-136,require_guestPhone,True
-137,flexible,True
-138,moderate,True
-139,strict_14_with_grace_period,True
-140,super_strict_30,True
-141,super_strict_60,True
-142,DayPricePerRooms,False
-143,DayPricePerBathRooms,False
-144,DayPricePerAccommodates,False
-145,DayPricePerIncluded,False
-146,income,False
-147,incomeRate,False
+,Keep,name,flex,location,service,type
+0,False,id,False,False,False,False
+1,False,last_scraped,False,False,False,False
+2,False,summary,False,False,False,False
+3,False,description,False,False,False,False
+4,False,house_rules,False,False,False,False
+5,False,host_id,False,False,False,False
+6,False,host_location,False,False,False,False
+7,False,host_response_time,False,False,False,False
+8,True,host_response_rate,False,False,True,False
+9,False,host_is_superhost,False,False,False,False
+10,False,host_listings_count,False,False,False,False
+11,False,host_total_listings_count,False,False,False,False
+12,False,host_verifications,False,False,False,False
+13,False,host_has_profile_pic,False,False,False,False
+14,False,host_identity_verified,False,False,False,False
+15,False,neighbourhood,False,False,False,False
+16,False,neighbourhood_cleansed,False,False,False,False
+17,False,city,False,False,False,False
+18,False,state,False,False,False,False
+19,False,zipcode,False,False,False,False
+20,False,market,False,False,False,False
+21,False,country_code,False,False,False,False
+22,False,country,False,False,False,False
+23,False,latitude,False,False,False,False
+24,False,longitude,False,False,False,False
+25,False,is_location_exact,False,False,False,False
+26,False,property_type,False,False,False,False
+27,False,room_type,False,False,False,False
+28,True,accommodates,False,False,True,True
+29,True,bathrooms,False,False,True,True
+30,True,bedrooms,False,False,True,True
+31,True,beds,False,False,True,True
+32,False,bed_type,False,False,False,False
+33,False,amenities,False,False,False,False
+34,True,square_feet,False,False,True,True
+35,False,price,False,False,False,False
+36,False,weekly_price,False,False,False,False
+37,False,monthly_price,False,False,False,False
+38,True,cleaning_fee,False,False,True,False
+39,True,guests_included,False,False,True,False
+40,True,extra_people,False,False,True,False
+41,True,minimum_nights,False,False,True,False
+42,True,maximum_nights,False,False,True,False
+43,False,has_availability,False,False,False,False
+44,True,availability_30,False,False,True,False
+45,True,availability_60,False,False,True,False
+46,True,availability_90,False,False,True,False
+47,True,availability_365,False,False,True,False
+48,True,number_of_reviews,False,False,True,False
+49,False,first_review,False,False,False,False
+50,False,last_review,False,False,False,False
+51,True,review_scores_rating,False,False,True,False
+52,True,review_scores_accuracy,False,False,True,False
+53,True,review_scores_cleanliness,False,False,True,False
+54,True,review_scores_checkin,False,False,True,False
+55,True,review_scores_communication,False,False,True,False
+56,True,review_scores_location,False,False,True,False
+57,True,review_scores_value,False,False,True,False
+58,False,instant_bookable,False,False,False,False
+59,False,is_business_travel_ready,False,False,False,False
+60,False,cancellation_policy,False,False,False,False
+61,False,require_guest_profile_picture,False,False,False,False
+62,False,require_guest_phone_verification,False,False,False,False
+63,False,reviews_per_month,False,False,False,False
+64,True,responseTime_fewDays,False,False,True,False
+65,True,responseTime_day,False,False,True,False
+66,True,responseTime_fewHours,False,False,True,False
+67,True,responseTime_hour,False,False,True,False
+68,True,superhost,False,False,True,False
+69,True,host_hasProfilePic,False,False,True,False
+70,True,host_id_verified,False,False,True,False
+71,True,Bijlmer-Centrum,False,True,False,False
+72,True,Bijlmer-Oost,False,True,False,False
+73,True,Bos en Lommer,False,True,False,False
+74,True,Buitenveldert - Zuidas,False,True,False,False
+75,True,Centrum-Oost,False,True,False,False
+76,True,Centrum-West,False,True,False,False
+77,True,De Aker - Nieuw Sloten,False,True,False,False
+78,True,De Baarsjes - Oud-West,False,True,False,False
+79,True,De Pijp - Rivierenbuurt,False,True,False,False
+80,True,Gaasperdam - Driemond,False,True,False,False
+81,True,Geuzenveld - Slotermeer,False,True,False,False
+82,True,IJburg - Zeeburgereiland,False,True,False,False
+83,True,Noord-Oost,False,True,False,False
+84,True,Noord-West,False,True,False,False
+85,True,Oostelijk Havengebied - Indische Buurt,False,True,False,False
+86,True,Osdorp,False,True,False,False
+87,True,Oud-Noord,False,True,False,False
+88,True,Oud-Oost,False,True,False,False
+89,True,Slotervaart,False,True,False,False
+90,True,Watergraafsmeer,False,True,False,False
+91,True,Westerpark,False,True,False,False
+92,True,Zuid,False,True,False,False
+93,True,Aparthotel,False,False,False,True
+94,True,Apartment,False,False,False,True
+95,True,Barn,False,False,False,True
+96,True,Bed and breakfast,False,False,False,True
+97,True,Boat,False,False,False,True
+98,True,Boutique hotel,False,False,False,True
+99,True,Bungalow,False,False,False,True
+100,True,Bus,False,False,False,True
+101,True,Cabin,False,False,False,True
+102,True,Camper/RV,False,False,False,True
+103,True,Campsite,False,False,False,True
+104,True,Casa particular (Cuba),False,False,False,True
+105,True,Castle,False,False,False,True
+106,True,Chalet,False,False,False,True
+107,True,Condominium,False,False,False,True
+108,True,Cottage,False,False,False,True
+109,True,Earth house,False,False,False,True
+110,True,Guest suite,False,False,False,True
+111,True,Guesthouse,False,False,False,True
+112,True,Hostel,False,False,False,True
+113,True,Hotel,False,False,False,True
+114,True,House,False,False,False,True
+115,True,Houseboat,False,False,False,True
+116,True,Lighthouse,False,False,False,True
+117,True,Loft,False,False,False,True
+118,True,Nature lodge,False,False,False,True
+119,True,Other,False,False,False,True
+120,True,Serviced apartment,False,False,False,True
+121,True,Tent,False,False,False,True
+122,True,Tiny house,False,False,False,True
+123,True,Townhouse,False,False,False,True
+124,True,Villa,False,False,False,True
+125,True,Windmill,False,False,False,True
+126,True,Yurt,False,False,False,True
+127,True,Entire home/apt,False,False,False,True
+128,True,Private room,False,False,False,True
+129,True,Shared room,False,False,False,True
+130,True,Airbed,False,False,False,True
+131,True,Couch,False,False,False,True
+132,True,Futon,False,False,False,True
+133,True,Pull-out Sofa,False,False,False,True
+134,True,Real Bed,False,False,False,True
+135,True,require_guestPic,False,False,True,False
+136,True,require_guestPhone,False,False,True,False
+137,True,flexible,True,False,True,False
+138,True,moderate,True,False,True,False
+139,True,strict_14_with_grace_period,True,False,True,False
+140,True,super_strict_30,True,False,True,False
+141,True,super_strict_60,True,False,True,False
+142,False,DayPricePerRooms,False,False,False,False
+143,False,DayPricePerBathRooms,False,False,False,False
+144,False,DayPricePerAccommodates,False,False,False,False
+145,False,DayPricePerIncluded,False,False,False,False
+146,False,income,False,False,False,False
+147,False,incomeRate,False,False,False,False
+148,True,wifi,False,False,False,True
+149,True,tv,False,False,False,True
+150,True,kitchen,False,False,False,True
+151,True,essentials,False,False,False,True
+152,True,lock_on_bedroom_door,False,False,False,True
