@@ -14,8 +14,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from app.views import HomeView
+from app.views import get_input, SubmitView
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', HomeView.as_view()),
+    url(r'^$', get_input),
+    url(r'^input/', get_input),
+    url(r'^submit/', SubmitView.as_view(), name='submit')
 ]
