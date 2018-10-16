@@ -20,6 +20,3 @@ class AppartmentForm(ModelForm):
           'TV',
           'lock',
           )
-
-class ReturnForm(forms.Form):
-    your_name = forms.CharField(label='Return', max_length=100)

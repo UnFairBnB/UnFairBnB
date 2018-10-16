@@ -10,7 +10,6 @@ import csv
 
 from .forms import AppartmentForm, ReturnForm
 from .models import Appartment
-from .resources import AppartmentResource
 
 class HomeView(TemplateView):
     template_name = 'index.html'
