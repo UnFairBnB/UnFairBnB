@@ -1,0 +1,26 @@
+.header {
+  background-color: #2E2E2E;
+  color: white;
+  text-align: left;
+  padding: 20px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.form {
+  padding: 20px;
+  display: block;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.label {
+  display: block;
+}
+
+.button {
+  padding: 20px;
+}
+
+.results {
+  padding: 20px;
+  color: black;
+}
