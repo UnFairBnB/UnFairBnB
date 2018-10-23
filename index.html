@@ -53,6 +53,8 @@ $(document).ready(function(){
       //+ Aparthotel *36.0442776194833 + Apartment * -43.9350371003921 + Barn * -27.4391410989611 + Bed and breakfast* -32.4566798703392 + Boat *-19.7763033479595 + Boutique hotel * -25.145065336851 + Bungalow *-17.6715195515565 + Bus * 142.498436158103 + Cabin * -26.6866968654737 +Camper/RV * -62.6106045508645 + Campsite *-47.430773920542 +Casa particular (Cuba) *-28.6673657671107 + Castle * -26.9480406097201 + Chalet *-41.2541602450477 +Condominium *-40.5187028757847 + Cottage *-45.1635331110595 +Earth house *-74.8798998455128 + Guest suite * -34.5864683800079 + Guesthouse * -23.200519529749 +Hostel * -62.7842766958498 + Hotel *0.387784689717137 +House * -42.1280255800119 +Houseboat * -2.51720556954584 + Lighthouse *709.239499124008 + Loft* -15.789557982541 + Nature lodge * 2.33998328825368 +Other * -40.407724513913 + Serviced apartment * 2.45500767413932 + Tent *-16.5560416176493 + Tiny house * -25.8221450835622 + Townhouse * -34.1932432135826 + Villa * -1.25682968650304+ Windmill * 15.9008080635087 + Yurt * -24.3775312585497 + Entire home/apt * 30.9755527513641 +Private room * 0.100820448469901 + Shared room * -6.413669791266
 
       // show results to the user
+      var div = document.getElementById("results")
+      div.innerHTML = "The optimal price for this apartment would be: " + price + "<br>" + div.innerHTML;
     });
 });
 </script>
@@ -61,7 +63,7 @@ $(document).ready(function(){
 
 <div class="header">
     <h1>UnFairBnB</h1>
-    <p>Get an unfair advantage.</p>
+    <p>Giving you unfair advantage</p>
 </div>
 
 <div class="form">
@@ -160,8 +162,8 @@ $(document).ready(function(){
     <button>Calculate your optimal price</button>
 </div>
 
-<div class="results">
-    <p></p>
+<div id=results>
+
 </div>
 
 </body>
