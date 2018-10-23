@@ -82,9 +82,9 @@
             var Yurt = (type=='Yurt') ? 1 : 0
 
             // setting variables about privacy
-            var Entirehome = (private=='Entire house') ? 1 : 0
-            var Privateroom = (private=='Private room') ? 1 : 0
-            var Sharedroom = (private=='Shared room') ? 1 : 0
+            var Entirehome = (private.value=='private3') ? 1 : 0
+            var Privateroom = (private.value=='private2') ? 1 : 0
+            var Sharedroom = (private.value=='private1') ? 1 : 0
 
             // this formula calculates the estimated price
             var price = 24.6627034085684 + accommodates * 18.9030211764788 + baths * 18.4268467267908 + bedrooms * 15.4129122866789 + wifi * 8.59565905101437 + tv * 8.12106354460741 + lock_on_bedroom_door * 5.3093041886222 + BijlmerCentrum * -16.5901885485972 + BijlmerOost * -26.3441147596606 + BosenLommer * 0.106285257748243 + BuitenveldertZuidas * -1.95691123291435 + CentrumOost * 41.0683240323453 + CentrumWest * 48.5007837199162 + DeAkerNieuwSloten * -12.6923941492469 + DeBaarsjesOudWest * 16.4297004879027 + DePijpRivierenbuurt * 22.0774719849269 + GaasperdamDriemond * -17.9065262678096 + GeuzenveldSlotermeer * -15.7073629684048 + IJburgZeeburgereiland * -9.50698742554501 + NoordOost * -20.2437845867141 + NoordWest * -19.1458015605343 + OostelijkHavengebiedIndischeBuurt *3.31884805229588 + Osdorp * -10.497415646301 + OudNoord * -3.24027924599052 + OudOost * 10.879119723531 + Slotervaart * -4.85328360581675 + Watergraafsmeer * 3.04725184514362 + Westerpark * 16.6259862841368 + Zuid * 21.2939820181536 + Aparthotel *36.0442776194833 + Apartment * -43.9350371003921 + Barn * -27.4391410989611 + Bedandbreakfast* -32.4566798703392 + Boat *-19.7763033479595 + Boutiquehotel * -25.145065336851 + Bungalow *-17.6715195515565 + Bus * 142.498436158103 + Cabin * -26.6866968654737 +CamperRV * -62.6106045508645 + Campsite *-47.430773920542 +CasaparticularCuba *-28.6673657671107 + Castle * -26.9480406097201 + Chalet *-41.2541602450477 +Condominium *-40.5187028757847 + Cottage *-45.1635331110595 +Earthhouse *-74.8798998455128 + Guestsuite * -34.5864683800079 + Guesthouse * -23.200519529749 +Hostel * -62.7842766958498 + Hotel *0.387784689717137 +House * -42.1280255800119 +Houseboat * -2.51720556954584 + Lighthouse *709.239499124008 + Loft* -15.789557982541 + Naturelodge * 2.33998328825368 +Other * -40.407724513913 + Servicedapartment * 2.45500767413932 + Tent *-16.5560416176493 + Tinyhouse * -25.8221450835622 + Townhouse * -34.1932432135826 + Villa * -1.25682968650304+ Windmill * 15.9008080635087 + Yurt * -24.3775312585497 + Entirehome * 30.9755527513641 +Privateroom * 0.100820448469901 + Sharedroom * -6.413669791266
@@ -92,6 +92,8 @@
             // show results to the user
             var div = document.getElementById('results')
             div.innerHTML = 'The optimal price for this apartment would be: ' + Number(price.toFixed(2)) + ' €<br>' + div.innerHTML;
+            var best = document.getElementById('best')
+            best.innerHTML = 'Highest price with ' + 1 + ' bedrooms';
         });
     });
     </script>
@@ -137,13 +139,13 @@
         </select>
         <br>
         How many people does the apartment accommodate:
-        <input id=acco type='number' name='quantity' min='1' max='10'>
+        <input id=acco type='number' name='quantity' min='1' max='10' value='1'>
         <br>
         How many bedrooms are there:
-        <input id=beds type='number' name='quantity' min='1' max='10'>
+        <input id=beds type='number' name='quantity' min='0' max='10' value='0'>
         <br>
         How many bathrooms are there:
-        <input id=baths type='number' name='quantity' min='1' max='10'>
+        <input id=baths type='number' name='quantity' min='0' max='10' value='0'>
         <br>
         Choose the most fitting type of the apartment:
         <select id=type>
@@ -201,9 +203,9 @@
     <button class='button'>Calculate your optimal price</button>
 </div>
 
-<div id=results>
+<div id=results></div>
 
-</div>
+<div id=best></div>
 
 </body>
 </html>
