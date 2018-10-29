@@ -107,10 +107,8 @@
 
         function update_price() {
             const apartment = create_apartment()
-            console.log(apartment)
             best = (best.price <= apartment.price) ? apartment : best
             
-            // show best so far
             const amenities = []
             if (apartment.tv) amenities.push('tv')
             if (apartment.wifi) amenities.push('wifi')
@@ -124,7 +122,6 @@
                 + best.baths + ' bathrooms<br>-&nbsp;Accommodates ' + best.accommodates 
                 + ' people' + '<br>-&nbsp;Amenities: ' + amen
 
-            // show results to the user
             div = document.getElementById('results')
             div.innerHTML = 'The optimal price for this apartment is: ' 
                 + Number(apartment.price.toFixed(2)) + '&nbsp;€';
