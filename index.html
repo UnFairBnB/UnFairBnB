@@ -6,96 +6,126 @@
     <link rel='stylesheet' type='text/css' href='styles.css'>
     <title>UnFairBnB</title>
     <script>
-    $(document).ready(function(){
-        $('button').click(function(){
-            var accommodates = document.getElementById('acco').value
-            var bedrooms = document.getElementById('beds').value
-            var baths = document.getElementById('baths').value
-            var e = document.getElementById('area')
-            var area = e.options[e.selectedIndex].text
-            var e = document.getElementById('type')
-            var type = e.options[e.selectedIndex].text
-            var private = document.getElementById('private')
-            var type = e.options[e.selectedIndex].text
-            var tv = document.getElementById('tv').checked
-            var wifi = document.getElementById('wifi').checked
-            var lock_on_bedroom_door = document.getElementById('lock').checked
+        const areas = {
+            'Biljemer-Centrum': -16.5901885485972,
+            'Biljemer-Oost': -26.3441147596606,
+            'Bos en Lommer': 0.106285257748243,
+            'Buitenveldert - Zuidas': -1.95691123291435,
+            'Centrum-Oost': 41.0683240323453,
+            'Centrum-West': 48.5007837199162,
+            'De Aker - Nieuw Sloten': -12.6923941492469,
+            'De Baarsjes - Oud-West': 16.4297004879027,
+            'De Pijp - Rivierenbuurt': 22.0774719849269,
+            'Gaasperdam - Driemond': 17.9065262678096,
+            'Geuzenveld - Slotermeer': -15.7073629684048,
+            'IJburg - Zeeburgereiland': -9.50698742554501,
+            'Noord-Oost': -20.2437845867141,
+            'Noord-West': -19.1458015605343,
+            'Oostelijk Havengebied - Indische Buurt': 3.31884805229588,
+            'Osdorp': -10.497415646301,
+            'Oud-Noord': -3.24027924599052,
+            'Oud-Oost': 10.879119723531,
+            'Slotervaart': -4.85328360581675,
+            'Watergraafsmeer': 3.04725184514362,
+            'Westerpark': 16.6259862841368,
+            'Zuid': 21.2939820181536,
+        };
+
+        const types = {
+            'Apartment hotel': 36.0442776194833,
+            'Apartment': -43.9350371003921,
+            'Barn': -27.4391410989611,
+            'Bed and breakfast': -32.4566798703392,
+            'Boat': -19.7763033479595,
+            'Boutique hotel': -25.145065336851,
+            'Bungalow': -17.6715195515565,
+            'Bus': 142.498436158103,
+            'Cabin': -26.6866968654737,
+            'Camper/RV': -62.6106045508645,
+            'Campsite': -47.430773920542,
+            'Casa particular (Cuba)': -28.6673657671107,
+            'Castle': -26.9480406097201,
+            'Chalet': -41.2541602450477,
+            'Condominium': -40.5187028757847,
+            'Cottage': -45.1635331110595,
+            'Earth house': -74.8798998455128,
+            'Guest suite': -34.5864683800079,
+            'Guesthouse': -23.200519529749,
+            'Hostel': -62.7842766958498,
+            'Hotel': 0.387784689717137,
+            'House': -42.1280255800119,
+            'Houseboat': -2.51720556954584,
+            'Lighthouse': 709.239499124008,
+            'Loft': -15.789557982541,
+            'Nature lodge': 2.33998328825368,
+            'Other': -40.407724513913,
+            'Serviced apartment': 2.45500767413932,
+            'Tent': -16.5560416176493,
+            'Tiny house': -25.8221450835622,
+            'Townhouse': -34.1932432135826,
+            'Villa': -1.25682968650304,
+            'Windmill': 15.9008080635087,
+            'Yurt': -24.3775312585497,
+        };
+
+        const privacy = {
+            'Entire house': 30.9755527513641,
+            'Private room': 0.100820448469901,
+            'Shared room': -6.413669791266,
+        };
+
+        function create_apartment() {
+            a = document.getElementById('area')
+            t = document.getElementById('type')
+            p = document.getElementById('private')
+            let apartment = {
+                accommodates: document.getElementById('acco').value,
+                bedrooms: document.getElementById('beds').value,
+                baths: document.getElementById('baths').value,
+                area: a.options[a.selectedIndex].text,
+                type: t.options[t.selectedIndex].text,
+                private: p.options[p.selectedIndex].text,
+                tv: document.getElementById('tv').checked,
+                wifi: document.getElementById('wifi').checked,
+                lock_on_bedroom_door: document.getElementById('lock').checked
+            }
+            apartment.price = 24.6627034085684 + apartment.accommodates * 18.9030211764788 + apartment.baths * 18.4268467267908 + apartment.bedrooms * 15.4129122866789 + apartment.wifi * 8.59565905101437 + apartment.tv * 8.12106354460741 + apartment.lock_on_bedroom_door * 5.3093041886222 + areas[apartment.area] + types[apartment.type] + privacy[apartment.private]
+            return apartment
+        }
+
+        let best
+
+        function update_price() {
+            const apartment = create_apartment()
             
-            // setting area variables for the formula
-            var BijlmerCentrum = (area=='Bijlmer-Centrum') ? 1 : 0
-            var BijlmerOost = (area=='Bijlmer-Oost') ? 1 : 0
-            var BosenLommer = (area=='Bos en Lommer') ? 1 : 0
-            var BuitenveldertZuidas = (area=='Buitenveldert - Zuidas') ? 1 : 0
-            var CentrumOost = (area=='Centrum-Oost') ? 1 : 0
-            var CentrumWest = (area=='Centrum-West') ? 1 : 0
-            var DeAkerNieuwSloten = (area=='De Aker - Nieuw Sloten') ? 1 : 0
-            var DeBaarsjesOudWest = (area=='De Baarsjes - Oud-West') ? 1 : 0
-            var DePijpRivierenbuurt = (area=='De Pijp - Rivierenbuurt') ? 1 : 0
-            var GaasperdamDriemond = (area=='Gaasperdam - Driemond') ? 1 : 0
-            var GeuzenveldSlotermeer = (area=='Geuzenveld - Slotermeer') ? 1 : 0
-            var IJburgZeeburgereiland = (area=='IJburg - Zeeburgereiland') ? 1 : 0
-            var NoordOost = (area=='Noord-Oost') ? 1 : 0
-            var NoordWest = (area=='Noord-West') ? 1 : 0
-            var OostelijkHavengebiedIndischeBuurt = (area=='Oostelijk Havengebied - Indische Buurt') ? 1 : 0
-            var Osdorp = (area=='Osdorp') ? 1 : 0
-            var OudNoord = (area=='Oud-Noord') ? 1 : 0
-            var OudOost = (area=='Oud-Oost') ? 1 : 0
-            var Slotervaart = (area=='Slotervaart') ? 1 : 0
-            var Watergraafsmeer = (area=='Watergraafsmeer') ? 1 : 0
-            var Westerpark = (area=='Westerpark') ? 1 : 0
-            var Zuid = (area=='Zuid') ? 1 : 0
-        
-            // setting apartment type variables for the formula
-            var Aparthotel = (type=='Apartment hotel') ? 1 : 0
-            var Apartment = (type=='Apartment') ? 1 : 0
-            var Barn = (type=='Barn') ? 1 : 0
-            var Bedandbreakfast = (type=='Bed and breakfast') ? 1 : 0
-            var Boat = (type=='Boat') ? 1 : 0
-            var Boutiquehotel = (type=='Boutique hotel') ? 1 : 0
-            var Bungalow = (type=='Bungalow') ? 1 : 0
-            var Bus = (type=='Bus') ? 1 : 0
-            var Cabin = (type=='Cabin') ? 1 : 0
-            var CamperRV = (type=='Camper/RV') ? 1 : 0
-            var Campsite = (type=='Campsite') ? 1 : 0
-            var CasaparticularCuba = (type=='Casa particular (Cuba)') ? 1 : 0
-            var Castle = (type=='Castle') ? 1 : 0
-            var Chalet = (type=='Chalet') ? 1 : 0
-            var Condominium = (type=='Condominium') ? 1 : 0
-            var Cottage = (type=='Cottage') ? 1 : 0
-            var Earthhouse = (type=='Earth house') ? 1 : 0
-            var Guestsuite = (type=='Guest suite') ? 1 : 0
-            var Guesthouse = (type=='Guesthouse') ? 1 : 0
-            var Hostel = (type=='Hostel') ? 1 : 0
-            var Hotel = (type=='Hotel') ? 1 : 0
-            var House = (type=='House') ? 1 : 0
-            var Houseboat = (type=='Houseboat') ? 1 : 0
-            var Lighthouse = (type=='Lighthouse') ? 1 : 0
-            var Loft = (type=='Loft') ? 1 : 0
-            var Naturelodge = (type=='Nature lodge') ? 1 : 0
-            var Other = (type=='Other') ? 1 : 0
-            var Servicedapartment = (type=='Serviced apartment') ? 1 : 0
-            var Tent = (type=='Tent') ? 1 : 0
-            var Tinyhouse = (type=='Tiny house') ? 1 : 0
-            var Townhouse = (type=='Townhouse') ? 1 : 0
-            var Villa = (type=='Villa') ? 1 : 0
-            var Windmill = (type=='Windmill') ? 1 : 0
-            var Yurt = (type=='Yurt') ? 1 : 0
+            best = (best.price <= apartment.price) ? apartment : best
+            
+            console.log(apartment.private)
+            // show best so far
+            const amenities = []
+            if (apartment.tv) amenities.push('tv')
+            if (apartment.wifi) amenities.push('wifi')
+            if (apartment.lock_on_bedroom_door) amenities.push('lock on the bedroom door')
+            const amen = amenities.join(', ')
 
-            // setting variables about privacy
-            var Entirehome = (private.value=='private3') ? 1 : 0
-            var Privateroom = (private.value=='private2') ? 1 : 0
-            var Sharedroom = (private.value=='private1') ? 1 : 0
-
-            // this formula calculates the estimated price
-            var price = 24.6627034085684 + accommodates * 18.9030211764788 + baths * 18.4268467267908 + bedrooms * 15.4129122866789 + wifi * 8.59565905101437 + tv * 8.12106354460741 + lock_on_bedroom_door * 5.3093041886222 + BijlmerCentrum * -16.5901885485972 + BijlmerOost * -26.3441147596606 + BosenLommer * 0.106285257748243 + BuitenveldertZuidas * -1.95691123291435 + CentrumOost * 41.0683240323453 + CentrumWest * 48.5007837199162 + DeAkerNieuwSloten * -12.6923941492469 + DeBaarsjesOudWest * 16.4297004879027 + DePijpRivierenbuurt * 22.0774719849269 + GaasperdamDriemond * -17.9065262678096 + GeuzenveldSlotermeer * -15.7073629684048 + IJburgZeeburgereiland * -9.50698742554501 + NoordOost * -20.2437845867141 + NoordWest * -19.1458015605343 + OostelijkHavengebiedIndischeBuurt *3.31884805229588 + Osdorp * -10.497415646301 + OudNoord * -3.24027924599052 + OudOost * 10.879119723531 + Slotervaart * -4.85328360581675 + Watergraafsmeer * 3.04725184514362 + Westerpark * 16.6259862841368 + Zuid * 21.2939820181536 + Aparthotel *36.0442776194833 + Apartment * -43.9350371003921 + Barn * -27.4391410989611 + Bedandbreakfast* -32.4566798703392 + Boat *-19.7763033479595 + Boutiquehotel * -25.145065336851 + Bungalow *-17.6715195515565 + Bus * 142.498436158103 + Cabin * -26.6866968654737 +CamperRV * -62.6106045508645 + Campsite *-47.430773920542 +CasaparticularCuba *-28.6673657671107 + Castle * -26.9480406097201 + Chalet *-41.2541602450477 +Condominium *-40.5187028757847 + Cottage *-45.1635331110595 +Earthhouse *-74.8798998455128 + Guestsuite * -34.5864683800079 + Guesthouse * -23.200519529749 +Hostel * -62.7842766958498 + Hotel *0.387784689717137 +House * -42.1280255800119 +Houseboat * -2.51720556954584 + Lighthouse *709.239499124008 + Loft* -15.789557982541 + Naturelodge * 2.33998328825368 +Other * -40.407724513913 + Servicedapartment * 2.45500767413932 + Tent *-16.5560416176493 + Tinyhouse * -25.8221450835622 + Townhouse * -34.1932432135826 + Villa * -1.25682968650304+ Windmill * 15.9008080635087 + Yurt * -24.3775312585497 + Entirehome * 30.9755527513641 +Privateroom * 0.100820448469901 + Sharedroom * -6.413669791266
+            var div = document.getElementById('best')
+            div.innerHTML =  '<b>Best price so far: ' + Number(best.price.toFixed(2)) 
+                + '&nbsp;€</b><br>-&nbsp;' + best.type + ' in ' + best.area + '<br>-&nbsp; '
+                + best.privacy +  '<br>-&nbsp; ' + best.bedrooms + ' bedrooms' + '<br>-&nbsp; ' 
+                + best.baths + ' bathrooms<br>-&nbsp;Accommodates ' + best.accommodates 
+                + ' people' + '<br>-&nbsp;Amenities: ' + amen
 
             // show results to the user
-            var div = document.getElementById('results')
-            div.innerHTML = 'The optimal price for this apartment would be: ' + Number(price.toFixed(2)) + ' €<br>' + div.innerHTML;
-            var best = document.getElementById('best')
-            best.innerHTML = 'Highest price with ' + 1 + ' bedrooms';
+            div = document.getElementById('results')
+            div.innerHTML = 'The optimal price for this apartment is: ' 
+                + Number(apartment.price.toFixed(2)) + '&nbsp;€';
+        };
+
+        $(document).ready(function(){
+            best = create_apartment()
+            update_price()
+            $('#myForm input, #myForm select').change(update_price);
         });
-    });
     </script>
 </head>
 <body>
@@ -110,102 +140,114 @@
     </div>
 </div>
 
-<div class='form'>
-    <form id='myForm' action='comment.php' method='post'> 
-        Choose the area of the apartment:
-        <select id=area>
-            <option value='area1'>Bijlmer-Centrum</option>
-            <option value='area2'>Bijlmer-Oost</option>
-            <option value='area3'>Bos en Lommer</option>
-            <option value='area4'>Buitenveldert - Zuidas</option>
-            <option value='area5'>Centrum-Oost</option>
-            <option value='area6'>Centrum-West</option>
-            <option value='area7'>De Aker - Nieuw Sloten</option>
-            <option value='area8'>De Baarsjes - Oud-West</option>
-            <option value='area9'>De Pijp - Rivierenbuurt</option>
-            <option value='area10'>Gaasperdam - Driemond</option>
-            <option value='area11'>Geuzenveld - Slotermeer</option>
-            <option value='area12'>IJburg - Zeeburgereiland</option>
-            <option value='area13'>Noord-Oost</option>
-            <option value='area14'>Noord-West</option>
-            <option value='area15'>Oostelijk Havengebied - Indische Buurt</option>
-            <option value='area16'>Osdorp</option>
-            <option value='area17'>Oud-Noord</option>
-            <option value='area18'>Oud-Oost</option>
-            <option value='area19'>Slotervaart</option>
-            <option value='area20'>Watergraafsmeer</option>
-            <option value='area21'>Westerpark</option>
-            <option value='area22'>Zuid</option>
-        </select>
-        <br>
-        How many people does the apartment accommodate:
-        <input id=acco type='number' name='quantity' min='1' max='10' value='1'>
-        <br>
-        How many bedrooms are there:
-        <input id=beds type='number' name='quantity' min='0' max='10' value='0'>
-        <br>
-        How many bathrooms are there:
-        <input id=baths type='number' name='quantity' min='0' max='10' value='0'>
-        <br>
-        Choose the most fitting type of the apartment:
-        <select id=type>
-            <option value='type1'>Apartment hotel</option>
-            <option value='type2'>Apartment</option>
-            <option value='type3'>Barn</option>
-            <option value='type4'>Bed and breakfast</option>
-            <option value='type5'>Boat</option>
-            <option value='type6'>Boutique hotel</option>
-            <option value='type7'>Bungalow</option>
-            <option value='type8'>Bus</option>
-            <option value='type9'>Cabin</option>
-            <option value='type10'>Camper/RV</option>
-            <option value='type11'>Campsite</option>
-            <option value='type12'>Casa particular (Cuba)</option>
-            <option value='type13'>Castle</option>
-            <option value='type14'>Chalet</option>
-            <option value='type15'>Condominium</option>
-            <option value='type16'>Cottage</option>
-            <option value='type17'>Earth house</option>
-            <option value='type18'>Guest suite</option>
-            <option value='type19'>Guesthouse</option>
-            <option value='type20'>Hostel</option>
-            <option value='type21'>Hotel</option>
-            <option value='type22'>House</option>
-            <option value='type23'>Houseboat</option>
-            <option value='type24'>Lighthouse</option>
-            <option value='type25'>Loft</option>
-            <option value='type26'>Nature lodge</option>
-            <option value='type27'>Serviced apartment</option>
-            <option value='type28'>Tent</option>
-            <option value='type29'>Tiny house</option>
-            <option value='type30'>Townhouse</option>
-            <option value='type31'>Villa</option>
-            <option value='type32'>Windmill</option>
-            <option value='type33'>Yurt</option>
-            <option value='type34'>Other</option>
-        </select>
-        <br>
-        Choose the most fitting option:
-        <select id=private>
-            <option value='private1'>Shared room</option>
-            <option value='private2'>Private room</option>
-            <option value='private3'>Entire house</option>
-        </select>
-        <br>
-        Check all that apply:
-        <br>
-        <input id=tv type='checkbox' name='tv' value='tv'>TV
-        <br>
-        <input id=wifi type='checkbox' name='wifi' value='wifi'>WIFI
-        <br>
-        <input id=lock type='checkbox' name='lock' value='lock'>Lock on the bedroom door
-    </form>
-    <button class='button'>Calculate your optimal price</button>
+
+
+<div id='container'>
+    <div id='form'>
+       
+        <form id='myForm' method='post'> 
+            With our service you can calculate the optimal listing price at AirBnB for your apartment.<br><br>
+            <b>Fill in the apartment details here:</b><br>
+            Choose the area of the apartment:
+            <select id=area>
+                <option value='area1' selected>Bijlmer-Centrum</option>
+                <option value='area2'>Bijlmer-Oost</option>
+                <option value='area3'>Bos en Lommer</option>
+                <option value='area4'>Buitenveldert - Zuidas</option>
+                <option value='area5'>Centrum-Oost</option>
+                <option value='area6'>Centrum-West</option>
+                <option value='area7'>De Aker - Nieuw Sloten</option>
+                <option value='area8'>De Baarsjes - Oud-West</option>
+                <option value='area9'>De Pijp - Rivierenbuurt</option>
+                <option value='area10'>Gaasperdam - Driemond</option>
+                <option value='area11'>Geuzenveld - Slotermeer</option>
+                <option value='area12'>IJburg - Zeeburgereiland</option>
+                <option value='area13'>Noord-Oost</option>
+                <option value='area14'>Noord-West</option>
+                <option value='area15'>Oostelijk Havengebied - Indische Buurt</option>
+                <option value='area16'>Osdorp</option>
+                <option value='area17'>Oud-Noord</option>
+                <option value='area18'>Oud-Oost</option>
+                <option value='area19'>Slotervaart</option>
+                <option value='area20'>Watergraafsmeer</option>
+                <option value='area21'>Westerpark</option>
+                <option value='area22'>Zuid</option>
+            </select>
+            <br>
+            How many people does the apartment accommodate:
+            <input id=acco type='number' name='quantity' min='1' max='10' value='1'>
+            <br>
+            How many bedrooms are there:
+            <input id=beds type='number' name='quantity' min='0' max='10' value='0'>
+            <br>
+            How many bathrooms are there:
+            <input id=baths type='number' name='quantity' min='0' max='10' value='0'>
+            <br>
+            Choose the most fitting type of the apartment:
+            <select id=type>
+                <option value='type2' selected>Apartment</option>
+                <option value='type1'>Apartment hotel</option>
+                <option value='type3'>Barn</option>
+                <option value='type4'>Bed and breakfast</option>
+                <option value='type5'>Boat</option>
+                <option value='type6'>Boutique hotel</option>
+                <option value='type7'>Bungalow</option>
+                <option value='type8'>Bus</option>
+                <option value='type9'>Cabin</option>
+                <option value='type10'>Camper/RV</option>
+                <option value='type11'>Campsite</option>
+                <option value='type12'>Casa particular (Cuba)</option>
+                <option value='type13'>Castle</option>
+                <option value='type14'>Chalet</option>
+                <option value='type15'>Condominium</option>
+                <option value='type16'>Cottage</option>
+                <option value='type17'>Earth house</option>
+                <option value='type18'>Guest suite</option>
+                <option value='type19'>Guesthouse</option>
+                <option value='type20'>Hostel</option>
+                <option value='type21'>Hotel</option>
+                <option value='type22'>House</option>
+                <option value='type23'>Houseboat</option>
+                <option value='type24'>Lighthouse</option>
+                <option value='type25'>Loft</option>
+                <option value='type26'>Nature lodge</option>
+                <option value='type27'>Serviced apartment</option>
+                <option value='type28'>Tent</option>
+                <option value='type29'>Tiny house</option>
+                <option value='type30'>Townhouse</option>
+                <option value='type31'>Villa</option>
+                <option value='type32'>Windmill</option>
+                <option value='type33'>Yurt</option>
+                <option value='type34'>Other</option>
+            </select>
+            <br>
+            Choose the most fitting option:
+            <select id=private>
+                <option value='private3' selected>Entire house</option>
+                <option value='private2'>Private room</option>
+                <option value='private1'>Shared room</option>
+            </select>
+            <br>
+            Check all that apply:
+            <br>
+            <input id=tv type='checkbox' name='tv' value='tv'>TV
+            <br>
+            <input id=wifi type='checkbox' name='wifi' value='wifi'>WIFI
+            <br>
+            <input id=lock type='checkbox' name='lock' value='lock'>Lock on the bedroom door
+        </form>
+    </div>
+    <div id='allresults'>
+        <div id=results>&nbsp;</div>
+        <div id=best>&nbsp;</div>
+        <div>
+            <b>Tips:</b><br>
+            Respond, and respond within an hour (+15.38&nbsp;€)<br>
+            Getting good value review scores? (-3.25&nbsp;€)<br>
+            Don’t let your guest sleep on a couch (-35.37&nbsp;€ to -68.614&nbsp;€)
+        </div>
+    </div>
 </div>
-
-<div id=results></div>
-
-<div id=best></div>
 
 </body>
 </html>
