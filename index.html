@@ -7,8 +7,8 @@
     <title>UnFairBnB</title>
     <script>
         const areas = {
-            'Biljemer-Centrum': -16.5901885485972,
-            'Biljemer-Oost': -26.3441147596606,
+            'Bijlmer-Centrum': -16.5901885485972,
+            'Bijlmer-Oost': -26.3441147596606,
             'Bos en Lommer': 0.106285257748243,
             'Buitenveldert - Zuidas': -1.95691123291435,
             'Centrum-Oost': 41.0683240323453,
@@ -94,9 +94,9 @@
                 + apartment.accommodates * 18.9030211764788 
                 + apartment.baths * 18.4268467267908 
                 + apartment.bedrooms * 15.4129122866789 
-                + apartment.wifi * 8.59565905101437 
-                + apartment.tv * 8.12106354460741 
-                + apartment.lock_on_bedroom_door * 5.3093041886222 
+                + (apartment.wifi ? 8.59565905101437 : 0) 
+                + (apartment.tv ? 8.12106354460741 : 0) 
+                + (apartment.lock_on_bedroom_door ? 5.3093041886222 : 0) 
                 + areas[apartment.area] 
                 + types[apartment.type] 
                 + privacy[apartment.private]
@@ -107,7 +107,7 @@
 
         function update_price() {
             const apartment = create_apartment()
-            
+            console.log(apartment)
             best = (best.price <= apartment.price) ? apartment : best
             
             // show best so far
@@ -120,7 +120,7 @@
             var div = document.getElementById('best')
             div.innerHTML =  '<b>Best price so far: ' + Number(best.price.toFixed(2)) 
                 + '&nbsp;€</b><br>-&nbsp;' + best.type + ' in ' + best.area + '<br>-&nbsp; '
-                + best.privacy +  '<br>-&nbsp; ' + best.bedrooms + ' bedrooms' + '<br>-&nbsp; ' 
+                + best.private +  '<br>-&nbsp; ' + best.bedrooms + ' bedrooms' + '<br>-&nbsp; ' 
                 + best.baths + ' bathrooms<br>-&nbsp;Accommodates ' + best.accommodates 
                 + ' people' + '<br>-&nbsp;Amenities: ' + amen
 
