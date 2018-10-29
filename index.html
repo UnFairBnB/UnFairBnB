@@ -79,6 +79,7 @@
             t = document.getElementById('type')
             p = document.getElementById('private')
             let apartment = {
+                price: 0,
                 accommodates: document.getElementById('acco').value,
                 bedrooms: document.getElementById('beds').value,
                 baths: document.getElementById('baths').value,
@@ -89,7 +90,16 @@
                 wifi: document.getElementById('wifi').checked,
                 lock_on_bedroom_door: document.getElementById('lock').checked
             }
-            apartment.price = 24.6627034085684 + apartment.accommodates * 18.9030211764788 + apartment.baths * 18.4268467267908 + apartment.bedrooms * 15.4129122866789 + apartment.wifi * 8.59565905101437 + apartment.tv * 8.12106354460741 + apartment.lock_on_bedroom_door * 5.3093041886222 + areas[apartment.area] + types[apartment.type] + privacy[apartment.private]
+            apartment.price = 24.6627034085684 
+                + apartment.accommodates * 18.9030211764788 
+                + apartment.baths * 18.4268467267908 
+                + apartment.bedrooms * 15.4129122866789 
+                + apartment.wifi * 8.59565905101437 
+                + apartment.tv * 8.12106354460741 
+                + apartment.lock_on_bedroom_door * 5.3093041886222 
+                + areas[apartment.area] 
+                + types[apartment.type] 
+                + privacy[apartment.private]
             return apartment
         }
 
@@ -100,7 +110,6 @@
             
             best = (best.price <= apartment.price) ? apartment : best
             
-            console.log(apartment.private)
             // show best so far
             const amenities = []
             if (apartment.tv) amenities.push('tv')
